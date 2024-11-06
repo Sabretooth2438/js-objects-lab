@@ -1,3 +1,5 @@
+//I didn’t create this code alone; I used online resources and AI to help me understand some concepts that I still don’t fully grasp. I need more independent practice or to redo it.
+
 const pokemon = require('./data.js')
 
 //Exercise 1
@@ -166,3 +168,6 @@ console.log(game.gyms)
 
 //Exercise 16
 console.log(game)
+
+//Level Up
+//
