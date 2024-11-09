@@ -170,4 +170,110 @@ console.log(game.gyms)
 console.log(game)
 
 //Level Up
-//
+// Exercise 17
+game.party.sort((a, b) => {
+  return b.hp - a.hp
+})
+
+console.log(game.party)
+
+// Exercise 18
+game.collection = []
+
+game.catchPokemon = (pokemonObj) => {
+  if (game.party.length < 6) {
+    game.party.push(pokemonObj)
+  } else {
+    game.collection.push(pokemonObj)
+  }
+
+  const pokeball = game.items.find((item) => {
+    return item.name === 'pokeball'
+  })
+
+  if (pokeball) {
+    pokeball.quantity -= 1
+  }
+}
+
+const dragonite = pokemon.find((poke) => {
+  return poke.name === 'Dragonite'
+})
+game.catchPokemon(dragonite)
+
+console.log(game.items)
+console.log(game.party)
+console.log(game.collection)
+
+// Exercise 19
+game.catchPokemon = (pokemonObj) => {
+  const pokeball = game.items.find((item) => {
+    return item.name === 'pokeball'
+  })
+
+  if (pokeball && pokeball.quantity > 0) {
+    if (game.party.length < 6) {
+      game.party.push(pokemonObj)
+    } else {
+      game.collection.push(pokemonObj)
+    }
+    pokeball.quantity -= 1
+  } else {
+    console.log('Not enough pokeballs to catch the desired Pokemon')
+  }
+}
+
+const mew = pokemon.find((poke) => {
+  return poke.name === 'Mew'
+})
+game.catchPokemon(mew)
+
+console.log(game.items)
+console.log(game.party)
+console.log(game.collection)
+
+// Exercise 20
+game.catchPokemon = (pokemonName) => {
+  const pokemonObj = pokemon.find((poke) => {
+    return poke.name.toLowerCase() === pokemonName.toLowerCase()
+  })
+
+  if (!pokemonObj) {
+    return 'The selected Pokemon does not exist'
+  }
+
+  const pokeball = game.items.find((item) => {
+    return item.name === 'pokeball'
+  })
+
+  if (pokeball && pokeball.quantity > 0) {
+    if (game.party.length < 6) {
+      game.party.push(pokemonObj)
+    } else {
+      game.collection.push(pokemonObj)
+    }
+    pokeball.quantity -= 1
+  } else {
+    console.log('Not enough pokeballs to catch the desired Pokemon')
+  }
+}
+
+console.log(game.catchPokemon('PiKacHU'))
+console.log(game.catchPokemon('Charmander'))
+console.log(game.catchPokemon('InvalidName'))
+console.log(game.items)
+console.log(game.party)
+console.log(game.collection)
+
+// Exercise 21
+const pokemonByType = {}
+
+pokemon.forEach((poke) => {
+  const type = poke.type
+  if (!pokemonByType[type]) {
+    pokemonByType[type] = []
+  }
+  pokemonByType[type].push(poke)
+})
+
+console.log(pokemonByType)
